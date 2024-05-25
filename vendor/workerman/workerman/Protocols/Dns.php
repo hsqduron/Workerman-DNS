@@ -30,9 +30,9 @@ class Dns
     }
     public static function send($response,$query,$info){
        $response=hex2bin($response);
-       $traffic=strlen($response);
-       $info=json_decode($info);
-       var_dump($info);
+       //$traffic=strlen($response);
+       //$info=json_decode($info);
+       //var_dump($info);
        #出流量统计
        #您也可以在此处保存$response,下一次通过raw类型实现快速缓存相应.
        return $response;
@@ -46,7 +46,7 @@ class Dns
      */
     public static function input($buffer)
     {
-        return 512;
+        return strlen($buffer);
     }
 
     /**
@@ -342,7 +342,7 @@ class Dns
                 $type='0006';
                 $ns=$buffer->detail;
                 $ns=json_decode( json_encode( $ns),true);
-                var_dump($ns);
+                //var_dump($ns);
                 
                     if($ns['type']=='auto'){
                         $ns=$ns['name'];
